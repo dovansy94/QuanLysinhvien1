@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <td>te khoa</td>
+        <td>Ten lop</td>
+        <td>Action</td>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="obj : ${KhoaList}">
+        <tr>
+            <td th:text="${obj.tenkhoa}"></td>
+            <td th:text="${obj.TenLop}"></td>
+
+
+            <td>
+                <form th:action="@{/khoa/delete}" method="get">
+                    <input type="hidden" name="id" id="id" th:value="${obj.id}"/>
+                    <button type="submit">Delete</button>
+                </form th:action="@{/khoa/edit}" method="get">
+                <form>
+                    <input type="hidden" name="id" id="id" th:value="${obj.id}"/>
+                    <button type="submit">Edit</button>
+                </form>
+            </td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>

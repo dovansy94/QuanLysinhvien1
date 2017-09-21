@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Khoa</title>
+    <link href="https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet" integrity="sha384-j4yX2PowqrVy4Ogwr6u4kWzszBjcwPSvEjXy5oAODYFpI/KZCiVl8hRTGAJULguo" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js" integrity="sha384-aUC8DaWA3aOpC7vk8W8jXtUafWxpUqKoxscempkyBcP8giruBvcooYNAKt8ZlbLo" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="alert" th:if="${status != null}">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <span th:text="${status}"></span>
+</div>
+<h2>khoa</h2>
+<form class="form-horizontal" th:action="@{/khoa/save}" method="post">
+    <div class="control-group">
+        <label class="control-label" for="inputTenkhoa">Tên khoa</label>
+        <div class="controls">
+            <input type="text" id="inputTenkhoa" name="Tenkhoa">
+        </div>
+    </div>
+    <div class="controll-group">
+        <label class="control-label" for="inputTenLop">Tên lớp  </label>
+        <div class="controls">
+            <input type="text" id="inputTenLop" name="Tenlop">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn">Submit</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
