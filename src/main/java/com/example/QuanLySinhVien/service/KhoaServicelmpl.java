@@ -33,9 +33,9 @@ public class KhoaServicelmpl implements KhoaService {
     @Override
     public boolean update(UpdateKhoaRequest updateKhoaRequest) {
         try {
-            Khoa khoa = new Khoa();
-            khoa.setTenkhoa(updateKhoaRequest.getTenkhoa());
+            Khoa khoa = khoaRepository.findOne(updateKhoaRequest.getId());
             khoa.setTenLop(updateKhoaRequest.getTenlop());
+            khoa.setTenkhoa(updateKhoaRequest.getTenkhoa());
             khoaRepository.save(khoa);
             return true;
         } catch (Exception e) {
@@ -47,11 +47,6 @@ public class KhoaServicelmpl implements KhoaService {
     }
 
     @Override
-    public List<Khoa> getAll(){
-        return (List<Khoa>) khoaRepository.findAll();
-    }
-
-    @Override
     public boolean delete(int id){
         try{
             khoaRepository.delete(id);
@@ -60,6 +55,29 @@ public class KhoaServicelmpl implements KhoaService {
             ex.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public List<Khoa> getAll() {
+        return (List<Khoa>) khoaRepository.findAll();
+    }
+
+    @Override
+    public boolean edit(int id) {
+        try {
+            Khoa khoa = khoaRepository.findOne(id);
+            khoaRepository.save(khoa);
+            return true;
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
+
+    }
+
+    @Override
+    public Khoa findOne(int id){
+        return khoaRepository.findOne(id);
     }
 }
 

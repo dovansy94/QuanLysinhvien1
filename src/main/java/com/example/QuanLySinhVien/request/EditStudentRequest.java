@@ -3,12 +3,20 @@ package com.example.QuanLySinhVien.request;
 
 
 public class EditStudentRequest {
-
+     Integer Id;
     String TenSV;
     String TenLop;
     String Diachi;
     String NgaySinh;
     boolean GioiTinh;
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
 
     public String getTenSV() {
         return TenSV;

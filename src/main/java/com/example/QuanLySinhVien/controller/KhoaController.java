@@ -19,7 +19,7 @@ public class KhoaController {
     @Autowired
     private KhoaService khoaService;
 
-    @RequestMapping(value = {"", "/", "/khoa"})
+    @RequestMapping(value = {"/khoa"})
     public String index() {
         return "index";
     }
@@ -45,10 +45,12 @@ public class KhoaController {
         }
         return "redirect:/khoa/add";
     }
-    @RequestMapping(value = "/khoa/update", method = RequestMethod.GET)
-    public String updateKhoa() {
+    @RequestMapping(value = "/khoa/toUpdate", method = RequestMethod.GET)
+    public String updateKhoa(Model model,@RequestParam("id") String id) {
+        model.addAttribute("khoa",khoaService.findOne(Integer.parseInt(id)));
         return "khoa/update";
     }
+
     @RequestMapping(value = "/khoa/update", method = RequestMethod.POST)
     public String updatekhoa(@Validated UpdateKhoaRequest khoaRequest, BindingResult bindingResult, RedirectAttributes redirectAttributes){
         if (khoaService.update(khoaRequest)){
@@ -57,7 +59,7 @@ public class KhoaController {
         }else {
             redirectAttributes.addFlashAttribute("status", "khong thể lưu");
         }
-        return "redirect:/khoa/update";
+        return "redirect:/khoa/getAll";
     }
 
     @RequestMapping(value = "/khoa/delete", method = RequestMethod.GET)
@@ -70,6 +72,12 @@ public class KhoaController {
     public String getAll(Model model){
         model.addAttribute("KhoaList",khoaService.getAll());
         return "/khoa/getAll";
+    }
+
+    @RequestMapping(value = "/khoa/edit", method = RequestMethod.GET)
+    public String edit(@RequestParam("id") String id){
+        khoaService.edit(Integer.parseInt(id));
+        return "redirect:getAll";
     }
 
 }

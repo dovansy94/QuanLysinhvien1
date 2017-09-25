@@ -13,5 +13,6 @@ public interface StudentService {
   boolean edit(EditStudentRequest addStudentRequest);
   List<Student> getAll();
   boolean delete(int id);
-
+  boolean update(int id);
+  Student findOne(int id);
 }

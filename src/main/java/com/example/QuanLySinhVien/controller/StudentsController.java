@@ -50,7 +50,8 @@ public class StudentsController {
   }
 
   @RequestMapping(value = "/student/toEdit", method = RequestMethod.GET)
-  public String editStudent() {
+  public String editStudent(Model model, @RequestParam("id") String id) {
+    model.addAttribute("student",studentService.findOne(Integer.parseInt(id)));
     return "student/edit";
   }
 
@@ -59,7 +60,7 @@ public class StudentsController {
                              BindingResult bindingResult, RedirectAttributes redirectAttributes) {
     if (bindingResult.hasErrors()) {
       redirectAttributes.addFlashAttribute("status", "Hãy nhập đủ các thông tin.");
-      return "redirect:/student/edit";
+      return "redirect:/student/getAll";
     }
 
     if (studentService.edit(studentRequest)) {
@@ -67,7 +68,7 @@ public class StudentsController {
     } else {
       redirectAttributes.addFlashAttribute("status", "Không thể lưu.");
     } {
-    return "student/Edit";}
+    return "redirect:/student/getAll";}
 
 
 

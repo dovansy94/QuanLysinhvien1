@@ -14,4 +14,6 @@ public interface KhoaService {
 
     List<Khoa> getAll();
     boolean delete(int id);
+    boolean edit(int id);
+    Khoa findOne(int id);
 }

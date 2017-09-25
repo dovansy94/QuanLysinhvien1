@@ -1,5 +1,6 @@
 package com.example.QuanLySinhVien.service;
 
+import com.example.QuanLySinhVien.model.Khoa;
 import com.example.QuanLySinhVien.model.Student;
 import com.example.QuanLySinhVien.repository.StudentRepository;
 import com.example.QuanLySinhVien.request.EditStudentRequest;
@@ -36,7 +37,7 @@ public class StudentServiceImpl implements StudentService {
   public boolean edit (EditStudentRequest editStudentRequest) {
 
     try {
-      Student student = new Student();
+      Student student = findOne(editStudentRequest.getId());
       student.setTen(editStudentRequest.getTenSV());
       student.setTenLop(editStudentRequest.getTenLop());
       student.setDiachi(editStudentRequest.getDiachi());
@@ -62,5 +63,15 @@ public class StudentServiceImpl implements StudentService {
       ex.printStackTrace();
       return false;
     }
+  }
+
+  @Override
+  public boolean update(int id) {
+   return false;
+  }
+
+  @Override
+  public Student findOne(int id){
+    return studentRepository.findOne(id);
   }
 }

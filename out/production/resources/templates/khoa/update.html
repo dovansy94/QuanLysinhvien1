@@ -14,15 +14,21 @@
 <h2>khoa</h2>
 <form class="form-horizontal" th:action="@{/khoa/update}" method="post">
     <div class="control-group">
-        <label class="control-label" for="inputTenkhoa">Tên khoa</label>
+        <label class="control-label" for="inputID" >ID</label>
         <div class="controls">
-            <input type="text" id="inputTenkhoa" name="Tenkhoa">
+            <input type="hidden" id="inputID" name="id" th:value="${khoa.id}">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="inputTenkhoa" >Tên khoa</label>
+        <div class="controls">
+            <input type="text" id="inputTenkhoa" name="Tenkhoa" th:value="${khoa.tenkhoa}">
         </div>
     </div>
     <div class="controll-group">
         <label class="control-label" for="inputTenLop">Tên lớp  </label>
         <div class="controls">
-            <input type="text" id="inputTenLop" name="Tenlop">
+            <input type="text" id="inputTenLop" name="Tenlop" th:value="${khoa.tenLop}">
         </div>
     </div>
 

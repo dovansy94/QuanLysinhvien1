@@ -8,6 +8,7 @@
     <table>
         <thead>
             <tr>
+                <td>ID</td>
                 <td>ten sv</td>
                 <td>Ten lop</td>
                 <td>dia chi</td>
@@ -32,6 +33,10 @@
                             <input type="hidden" name="id" id="id" th:value="${obj.id}"/>
                             <button type="submit">Delete</button>
                         </form>
+                        <form th:action="@{/student/toEdit}" method="get">
+                            <input type="hidden" name="id" id="id" th:value="${obj.id}"/>
+                            <button type="submit">edit</button>
+                        </form >
                     </td>
                 </tr>
             </th:block>
